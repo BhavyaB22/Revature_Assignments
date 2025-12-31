@@ -1,0 +1,21 @@
+
+/* center container */
+.container {
+    width: 350px;
+    margin: 100px auto;
+}
+
+/* fieldset styling */
+fieldset {
+    border: 2px solid #333;
+    padding: 20px;
+    border-radius: 10px;
+    background: #fff;
+}
+
+/* legend alignment */
+legend {
+    padding: 0 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
