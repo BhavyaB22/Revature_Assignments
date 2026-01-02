@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Students Data</title>
+  <style>
+    .fail {
+      color: red;
+      font-weight: bold;
+    }
+    table {
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th, td {
+      border: 1px solid #000;
+      padding: 6px 10px;
+    }
+  </style>
+</head>
+<body>
+
+<h3>All Students</h3>
+<ul id="studentList"></ul>
+
+<h3>Students Scored More Than 60</h3>
+<ul id="above60"></ul>
+
+<h3>CSE Students</h3>
+<ul id="cseList"></ul>
+
+<h3>Students Table</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Marks</th>
+      <th>Department</th>
+    </tr>
+  </thead>
+  <tbody id="tableBody"></tbody>
+</table>
+
+<h3>Statistics</h3>
+<p id="deptCount"></p>
+<p id="topper"></p>
+<p id="average"></p>
+
+<script>
+const students = [
+  { id: 1, name: "Amit", marks: 78, department: "CSE" },
+  { id: 2, name: "Priya", marks: 92, department: "ECE" },
+  { id: 3, name: "Rahul", marks: 45, department: "MECH" },
+  { id: 4, name: "Sneha", marks: 66, department: "CSE" },
+  { id: 5, name: "Kiran", marks: 88, department: "ECE" }
+];
+
+// 1️⃣ Display all student names (UL)
+const list = document.getElementById("studentList");
+students.forEach(s => {
+  const li = document.createElement("li");
+  li.textContent = s.name;
+  if (s.marks < 50) li.classList.add("fail"); // 9️⃣ highlight failed
+  list.appendChild(li);
+});
+
+// 2️⃣ Students with marks > 60
+const above60 = document.getElementById("above60");
+students.filter(s => s.marks > 60)
+        .forEach(s => {
+          const li = document.createElement("li");
+          li.textContent = s.name;
+          above60.appendChild(li);
+        });
+
+// 3️⃣ Count students per department
+const deptCount = students.reduce((acc, s) => {
+  acc[s.department] = (acc[s.department] || 0) + 1;
+  return acc;
+}, {});
+document.getElementById("deptCount").textContent =
+  `Department Count: ${JSON.stringify(deptCount)}`;
+
+// 4️⃣ Highest marks student
+const topper = students.reduce((max, s) =>
+  s.marks > max.marks ? s : max
+);
+document.getElementById("topper").textContent =
+  `Topper: ${topper.name} (${topper.marks})`;
+
+// 5️⃣ Display students in table
+const tableBody = document.getElementById("tableBody");
+students.forEach(s => {
+  const tr = document.createElement("tr");
+  if (s.marks < 50) tr.style.color = "red"; // failed in red
+  tr.innerHTML = `
+    <td>${s.name}</td>
+    <td>${s.marks}</td>
+    <td>${s.department}</td>
+  `;
+  tableBody.appendChild(tr);
+});
+
+// 6️⃣ Average marks
+const avg = students.reduce((sum, s) => sum + s.marks, 0) / students.length;
+document.getElementById("average").textContent =
+  `Average Marks: ${avg.toFixed(2)}`;
+
+// 7️⃣ Display only CSE students
+const cseList = document.getElementById("cseList");
+students.filter(s => s.department === "CSE")
+        .forEach(s => {
+          const li = document.createElement("li");
+          li.textContent = s.name;
+          cseList.appendChild(li);
+        });
+
+// 8️⃣ Sort students by marks (descending)
+students.sort((a, b) => b.marks - a.marks);
+
+// 9️⃣ Add new student & update list
+students.push({ id: 6, name: "Rohit", marks: 40, department: "CSE" });
+</script>
+
+</body>
+</html>
