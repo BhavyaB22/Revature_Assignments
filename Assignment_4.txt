@@ -1,0 +1,814 @@
+Assignment Question
+ 
+Column Name	Data Type	Description
+emp_id	NUMBER (IDENTITY, PK)	Auto-increment employee ID
+emp_name	VARCHAR2(30)	Employee name
+gender	VARCHAR2(10)	Male / Female
+department	VARCHAR2(20)	Department name
+designation	VARCHAR2(30)	Job title
+salary	NUMBER	Monthly salary
+location	VARCHAR2(20)	Work location
+joining_date	DATE	Date of joining
+email	VARCHAR2(50)	Email ID
+ 
+
+Display all employee records.
+SQL> select * from Employee;
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1001 Arun                           Male       IT                   Developer                           45000 Chennai              10-JAN-22 arun@company.com
+      1003 Divya                          Female     HR                   HR Executive                        40000 Bangalore            15-MAY-21 divya@company.com
+      1004 Mubeen                         Male       IT                   Senior Developer                    55000 Chennai              20-MAR-23 mubeen@company.com
+      1005 Ravi                           Male       Finance              Accountant                                Mumbai               18-JUL-20 ravi@company.com
+      1006 Anita                          Female     Sales                Sales Executive                     38000 Delhi                12-SEP-22 anita@company.com
+      1007 Kumar                          Male       HR                   Recruiter                           32000 Chennai              05-NOV-21 kumar@company.com
+      1008 Divya                          Female     IT                   Tester                              40000 Bangalore            25-JUN-22 divya.it@company.com
+      1009 Rahul                          Male       IT                   Developer                           45000 Chennai              14-MAR-20
+      1010 Sneha                          Female     Finance              Analyst                                   Mumbai               08-JAN-23 sneha@company.com
+      1011 Amit                           Male       Sales                Sales Manager                       60000 Delhi                01-DEC-19 amit@company.com
+      1012 Pooja                          Female     HR                   HR Executive                        40000 Chennai              19-APR-21
+      1013 Ramesh                         Male       IT                   Support Engineer                    30000 Hyderabad            10-AUG-22 ramesh@company.com
+      1014 Suresh                         Male       IT                   Developer                           45000 Chennai              30-OCT-20 suresh@company.com
+      1015 Neha                           Female     Sales                Sales Executive                     38000 Delhi                14-FEB-23 neha@company.com
+      1016 Arun                           Male       IT                   Developer                           45000 Chennai              09-SEP-21 arun.it@company.com
+      1017 Kiran                          Male       Finance              Accountant                                Mumbai               21-DEC-22 kiran@company.com
+      1018 Meena                          Female     HR                   Recruiter                           32000 Bangalore            11-JUN-20 meena@company.com
+      1019 Vijay                          Male       IT                   Tester                              35000 Hyderabad            01-APR-23
+      1020 Anita                          Female     Sales                Sales Executive                     38000 Delhi                07-JUL-21 anita.sales@company.com
+      1021 Rohit                          Male       IT                   Developer                           45000 Chennai              18-NOV-22 rohit@company.com
+      1022 Sanjay                         Male       IT                   Developer                                 Chennai              02-FEB-20
+
+21 rows selected.
+
+ 
+2. Display only employee ID, name, and department.
+SELECT emp_id,emp_name,department FROM Employee;
+
+    EMP_ID EMP_NAME                       DEPARTMENT
+---------- ------------------------------ --------------------
+      1001 Arun                           IT
+      1003 Divya                          HR
+      1004 Mubeen                         IT
+      1005 Ravi                           Finance
+      1006 Anita                          Sales
+      1007 Kumar                          HR
+      1008 Divya                          IT
+      1009 Rahul                          IT
+      1010 Sneha                          Finance
+      1011 Amit                           Sales
+      1012 Pooja                          HR
+      1013 Ramesh                         IT
+      1014 Suresh                         IT
+      1015 Neha                           Sales
+      1016 Arun                           IT
+      1017 Kiran                          Finance
+      1018 Meena                          HR
+      1019 Vijay                          IT
+      1020 Anita                          Sales
+      1021 Rohit                          IT
+      1022 Sanjay                         IT
+
+21 rows selected.
+
+3. Display employee name and salary for all employees.
+
+SELECT emp_name,salary FROM Employee;
+
+EMP_NAME                           SALARY
+------------------------------ ----------
+Arun                                45000
+Divya                               40000
+Mubeen                              55000
+Ravi
+Anita                               38000
+Kumar                               32000
+Divya                               40000
+Rahul                               45000
+Sneha
+Amit                                60000
+Pooja                               40000
+Ramesh                              30000
+Suresh                              45000
+Neha                                38000
+Arun                                45000
+Kiran
+Meena                               32000
+Vijay                               35000
+Anita                               38000
+Rohit                               45000
+Sanjay
+
+21 rows selected.
+
+4. Display employees whose salary is greater than 40,000.
+SELECT * FROM Employee WHERE salary>40000;
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1001 Arun                           Male       IT                   Developer                           45000 Chennai              10-JAN-22 arun@company.com
+      1004 Mubeen                         Male       IT                   Senior Developer                    55000 Chennai              20-MAR-23 mubeen@company.com
+      1009 Rahul                          Male       IT                   Developer                           45000 Chennai              14-MAR-20
+      1011 Amit                           Male       Sales                Sales Manager                       60000 Delhi                01-DEC-19 amit@company.com
+      1014 Suresh                         Male       IT                   Developer                           45000 Chennai              30-OCT-20 suresh@company.com
+      1016 Arun                           Male       IT                   Developer                           45000 Chennai              09-SEP-21 arun.it@company.com
+      1021 Rohit                          Male       IT                   Developer                           45000 Chennai              18-NOV-22 rohit@company.com
+
+7 rows selected.
+
+Display employees whose salary is less than or equal to 35,000.
+SELECT * FROM Employee WHERE salary<=35000;
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1007 Kumar                          Male       HR                   Recruiter                           32000 Chennai              05-NOV-21 kumar@company.com
+      1013 Ramesh                         Male       IT                   Support Engineer                    30000 Hyderabad            10-AUG-22 ramesh@company.com
+      1018 Meena                          Female     HR                   Recruiter                           32000 Bangalore            11-JUN-20 meena@company.com
+      1019 Vijay                          Male       IT                   Tester                              35000 Hyderabad            01-APR-23
+
+
+Display employees whose salary is exactly 45,000.
+ SELECT * FROM Employee WHERE salary=45000;
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1001 Arun                           Male       IT                   Developer                           45000 Chennai              10-JAN-22 arun@company.com
+      1009 Rahul                          Male       IT                   Developer                           45000 Chennai              14-MAR-20
+      1014 Suresh                         Male       IT                   Developer                           45000 Chennai              30-OCT-20 suresh@company.com
+      1016 Arun                           Male       IT                   Developer                           45000 Chennai              09-SEP-21 arun.it@company.com
+      1021 Rohit                          Male       IT                   Developer                           45000 Chennai              18-NOV-22 rohit@company.com
+
+
+Display employees who joined after 01-Jan-2022.
+
+SELECT * FROM Employee WHERE joining_date>DATE '2022-01-01';
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1001 Arun                           Male       IT                   Developer                           45000 Chennai              10-JAN-22 arun@company.com
+      1004 Mubeen                         Male       IT                   Senior Developer                    55000 Chennai              20-MAR-23 mubeen@company.com
+      1006 Anita                          Female     Sales                Sales Executive                     38000 Delhi                12-SEP-22 anita@company.com
+      1008 Divya                          Female     IT                   Tester                              40000 Bangalore            25-JUN-22 divya.it@company.com
+      1010 Sneha                          Female     Finance              Analyst                                   Mumbai               08-JAN-23 sneha@company.com
+      1013 Ramesh                         Male       IT                   Support Engineer                    30000 Hyderabad            10-AUG-22 ramesh@company.com
+      1015 Neha                           Female     Sales                Sales Executive                     38000 Delhi                14-FEB-23 neha@company.com
+      1017 Kiran                          Male       Finance              Accountant                                Mumbai               21-DEC-22 kiran@company.com
+      1019 Vijay                          Male       IT                   Tester                              35000 Hyderabad            01-APR-23
+      1021 Rohit                          Male       IT                   Developer                           45000 Chennai              18-NOV-22 rohit@company.com
+
+10 rows selected.
+
+Display employees who joined before 01-Jan-2021.
+
+ SELECT * FROM Employee WHERE joining_date<DATE '2021-01-01';
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1005 Ravi                           Male       Finance              Accountant                                Mumbai               18-JUL-20 ravi@company.com
+      1009 Rahul                          Male       IT                   Developer                           45000 Chennai              14-MAR-20
+      1011 Amit                           Male       Sales                Sales Manager                       60000 Delhi                01-DEC-19 amit@company.com
+      1014 Suresh                         Male       IT                   Developer                           45000 Chennai              30-OCT-20 suresh@company.com
+      1018 Meena                          Female     HR                   Recruiter                           32000 Bangalore            11-JUN-20 meena@company.com
+      1022 Sanjay                         Male       IT                   Developer                                 Chennai              02-FEB-20
+
+6 rows selected.
+
+Display employees whose salary is between 35,000 and 50,000.
+
+SELECT * FROM Employee WHERE salary BETWEEN 35000 AND 50000;
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1001 Arun                           Male       IT                   Developer                           45000 Chennai              10-JAN-22 arun@company.com
+      1003 Divya                          Female     HR                   HR Executive                        40000 Bangalore            15-MAY-21 divya@company.com
+      1006 Anita                          Female     Sales                Sales Executive                     38000 Delhi                12-SEP-22 anita@company.com
+      1008 Divya                          Female     IT                   Tester                              40000 Bangalore            25-JUN-22 divya.it@company.com
+      1009 Rahul                          Male       IT                   Developer                           45000 Chennai              14-MAR-20
+      1012 Pooja                          Female     HR                   HR Executive                        40000 Chennai              19-APR-21
+      1014 Suresh                         Male       IT                   Developer                           45000 Chennai              30-OCT-20 suresh@company.com
+      1015 Neha                           Female     Sales                Sales Executive                     38000 Delhi                14-FEB-23 neha@company.com
+      1016 Arun                           Male       IT                   Developer                           45000 Chennai              09-SEP-21 arun.it@company.com
+      1019 Vijay                          Male       IT                   Tester                              35000 Hyderabad            01-APR-23
+      1020 Anita                          Female     Sales                Sales Executive                     38000 Delhi                07-JUL-21 anita.sales@company.com
+      1021 Rohit                          Male       IT                   Developer                           45000 Chennai              18-NOV-22 rohit@company.com
+
+12 rows selected.
+
+Display employees whose salary is not between 30,000 and 45,000.
+
+ SELECT * FROM Employee WHERE salary NOT BETWEEN 35000 AND 45000;
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1004 Mubeen                         Male       IT                   Senior Developer                    55000 Chennai              20-MAR-23 mubeen@company.com
+      1007 Kumar                          Male       HR                   Recruiter                           32000 Chennai              05-NOV-21 kumar@company.com
+      1011 Amit                           Male       Sales                Sales Manager                       60000 Delhi                01-DEC-19 amit@company.com
+      1013 Ramesh                         Male       IT                   Support Engineer                    30000 Hyderabad            10-AUG-22 ramesh@company.com
+      1018 Meena                          Female     HR                   Recruiter                           32000 Bangalore            11-JUN-20 meena@company.com
+
+Display employees whose joining date is between 01-Jan-2021 and 31-Dec-2022.
+ SELECT * FROM Employee WHERE joining_date  BETWEEN DATE '2021-01-21' AND DATE '2022-12-31';
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1001 Arun                           Male       IT                   Developer                           45000 Chennai              10-JAN-22 arun@company.com
+      1003 Divya                          Female     HR                   HR Executive                        40000 Bangalore            15-MAY-21 divya@company.com
+      1006 Anita                          Female     Sales                Sales Executive                     38000 Delhi                12-SEP-22 anita@company.com
+      1007 Kumar                          Male       HR                   Recruiter                           32000 Chennai              05-NOV-21 kumar@company.com
+      1008 Divya                          Female     IT                   Tester                              40000 Bangalore            25-JUN-22 divya.it@company.com
+      1012 Pooja                          Female     HR                   HR Executive                        40000 Chennai              19-APR-21
+      1013 Ramesh                         Male       IT                   Support Engineer                    30000 Hyderabad            10-AUG-22 ramesh@company.com
+      1016 Arun                           Male       IT                   Developer                           45000 Chennai              09-SEP-21 arun.it@company.com
+      1017 Kiran                          Male       Finance              Accountant                                Mumbai               21-DEC-22 kiran@company.com
+      1020 Anita                          Female     Sales                Sales Executive                     38000 Delhi                07-JUL-21 anita.sales@company.com
+      1021 Rohit                          Male       IT                   Developer                           45000 Chennai              18-NOV-22 rohit@company.com
+
+11 rows selected.
+
+Display employees working in IT or HR departments.
+SELECT * FROM employee WHERE department IN ('IT', 'HR');
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1001 Arun                           Male       IT                   Developer                           45000 Chennai              10-JAN-22 arun@company.com
+      1003 Divya                          Female     HR                   HR Executive                        40000 Bangalore            15-MAY-21 divya@company.com
+      1004 Mubeen                         Male       IT                   Senior Developer                    55000 Chennai              20-MAR-23 mubeen@company.com
+      1007 Kumar                          Male       HR                   Recruiter                           32000 Chennai              05-NOV-21 kumar@company.com
+      1008 Divya                          Female     IT                   Tester                              40000 Bangalore            25-JUN-22 divya.it@company.com
+      1009 Rahul                          Male       IT                   Developer                           45000 Chennai              14-MAR-20
+      1012 Pooja                          Female     HR                   HR Executive                        40000 Chennai              19-APR-21
+      1013 Ramesh                         Male       IT                   Support Engineer                    30000 Hyderabad            10-AUG-22 ramesh@company.com
+      1014 Suresh                         Male       IT                   Developer                           45000 Chennai              30-OCT-20 suresh@company.com
+      1016 Arun                           Male       IT                   Developer                           45000 Chennai              09-SEP-21 arun.it@company.com
+      1018 Meena                          Female     HR                   Recruiter                           32000 Bangalore            11-JUN-20 meena@company.com
+      1019 Vijay                          Male       IT                   Tester                              35000 Hyderabad            01-APR-23
+      1021 Rohit                          Male       IT                   Developer                           45000 Chennai              18-NOV-22 rohit@company.com
+      1022 Sanjay                         Male       IT                   Developer                                 Chennai              02-FEB-20
+
+14 rows selected.
+
+Display employees working in Chennai, Bangalore, or Hyderabad.
+SELECT * FROM employee WHERE location IN ('Chennai', 'Banglore','Hyderabad');
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1001 Arun                           Male       IT                   Developer                           45000 Chennai              10-JAN-22 arun@company.com
+      1004 Mubeen                         Male       IT                   Senior Developer                    55000 Chennai              20-MAR-23 mubeen@company.com
+      1007 Kumar                          Male       HR                   Recruiter                           32000 Chennai              05-NOV-21 kumar@company.com
+      1009 Rahul                          Male       IT                   Developer                           45000 Chennai              14-MAR-20
+      1012 Pooja                          Female     HR                   HR Executive                        40000 Chennai              19-APR-21
+      1013 Ramesh                         Male       IT                   Support Engineer                    30000 Hyderabad            10-AUG-22 ramesh@company.com
+      1014 Suresh                         Male       IT                   Developer                           45000 Chennai              30-OCT-20 suresh@company.com
+      1016 Arun                           Male       IT                   Developer                           45000 Chennai              09-SEP-21 arun.it@company.com
+      1019 Vijay                          Male       IT                   Tester                              35000 Hyderabad            01-APR-23
+      1021 Rohit                          Male       IT                   Developer                           45000 Chennai              18-NOV-22 rohit@company.com
+      1022 Sanjay                         Male       IT                   Developer                                 Chennai              02-FEB-20
+
+11 rows selected.
+
+Display employees whose salary is IN (32000, 38000, 40000).
+SELECT * FROM employee WHERE salary IN (32000, 38000, 40000);
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1003 Divya                          Female     HR                   HR Executive                        40000 Bangalore            15-MAY-21 divya@company.com
+      1006 Anita                          Female     Sales                Sales Executive                     38000 Delhi                12-SEP-22 anita@company.com
+      1007 Kumar                          Male       HR                   Recruiter                           32000 Chennai              05-NOV-21 kumar@company.com
+      1008 Divya                          Female     IT                   Tester                              40000 Bangalore            25-JUN-22 divya.it@company.com
+      1012 Pooja                          Female     HR                   HR Executive                        40000 Chennai              19-APR-21
+      1015 Neha                           Female     Sales                Sales Executive                     38000 Delhi                14-FEB-23 neha@company.com
+      1018 Meena                          Female     HR                   Recruiter                           32000 Bangalore            11-JUN-20 meena@company.com
+      1020 Anita                          Female     Sales                Sales Executive                     38000 Delhi                07-JUL-21 anita.sales@company.com
+
+8 rows selected.
+
+
+Display employees not working in Mumbai.
+ SELECT * FROM employee WHERE location NOT IN ('Mumbai');
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1001 Arun                           Male       IT                   Developer                           45000 Chennai              10-JAN-22 arun@company.com
+      1003 Divya                          Female     HR                   HR Executive                        40000 Bangalore            15-MAY-21 divya@company.com
+      1004 Mubeen                         Male       IT                   Senior Developer                    55000 Chennai              20-MAR-23 mubeen@company.com
+      1006 Anita                          Female     Sales                Sales Executive                     38000 Delhi                12-SEP-22 anita@company.com
+      1007 Kumar                          Male       HR                   Recruiter                           32000 Chennai              05-NOV-21 kumar@company.com
+      1008 Divya                          Female     IT                   Tester                              40000 Bangalore            25-JUN-22 divya.it@company.com
+      1009 Rahul                          Male       IT                   Developer                           45000 Chennai              14-MAR-20
+      1011 Amit                           Male       Sales                Sales Manager                       60000 Delhi                01-DEC-19 amit@company.com
+      1012 Pooja                          Female     HR                   HR Executive                        40000 Chennai              19-APR-21
+      1013 Ramesh                         Male       IT                   Support Engineer                    30000 Hyderabad            10-AUG-22 ramesh@company.com
+      1014 Suresh                         Male       IT                   Developer                           45000 Chennai              30-OCT-20 suresh@company.com
+      1015 Neha                           Female     Sales                Sales Executive                     38000 Delhi                14-FEB-23 neha@company.com
+      1016 Arun                           Male       IT                   Developer                           45000 Chennai              09-SEP-21 arun.it@company.com
+      1018 Meena                          Female     HR                   Recruiter                           32000 Bangalore            11-JUN-20 meena@company.com
+      1019 Vijay                          Male       IT                   Tester                              35000 Hyderabad            01-APR-23
+      1020 Anita                          Female     Sales                Sales Executive                     38000 Delhi                07-JUL-21 anita.sales@company.com
+      1021 Rohit                          Male       IT                   Developer                           45000 Chennai              18-NOV-22 rohit@company.com
+      1022 Sanjay                         Male       IT                   Developer                                 Chennai              02-FEB-20
+
+18 rows selected.
+
+Display employees whose department is not in IT and HR.
+SELECT * FROM employee WHERE department NOT IN ('IT', 'HR');
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1005 Ravi                           Male       Finance              Accountant                                Mumbai               18-JUL-20 ravi@company.com
+      1006 Anita                          Female     Sales                Sales Executive                     38000 Delhi                12-SEP-22 anita@company.com
+      1010 Sneha                          Female     Finance              Analyst                                   Mumbai               08-JAN-23 sneha@company.com
+      1011 Amit                           Male       Sales                Sales Manager                       60000 Delhi                01-DEC-19 amit@company.com
+      1015 Neha                           Female     Sales                Sales Executive                     38000 Delhi                14-FEB-23 neha@company.com
+      1017 Kiran                          Male       Finance              Accountant                                Mumbai               21-DEC-22 kiran@company.com
+      1020 Anita                          Female     Sales                Sales Executive                     38000 Delhi                07-JUL-21 anita.sales@company.com
+
+7 rows selected.
+
+Display employees whose designation is not in Developer and Tester.
+ SELECT * FROM employee WHERE designation NOT IN ('Developer', 'Tester');
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1003 Divya                          Female     HR                   HR Executive                        40000 Bangalore            15-MAY-21 divya@company.com
+      1004 Mubeen                         Male       IT                   Senior Developer                    55000 Chennai              20-MAR-23 mubeen@company.com
+      1005 Ravi                           Male       Finance              Accountant                                Mumbai               18-JUL-20 ravi@company.com
+      1006 Anita                          Female     Sales                Sales Executive                     38000 Delhi                12-SEP-22 anita@company.com
+      1007 Kumar                          Male       HR                   Recruiter                           32000 Chennai              05-NOV-21 kumar@company.com
+      1010 Sneha                          Female     Finance              Analyst                                   Mumbai               08-JAN-23 sneha@company.com
+      1011 Amit                           Male       Sales                Sales Manager                       60000 Delhi                01-DEC-19 amit@company.com
+      1012 Pooja                          Female     HR                   HR Executive                        40000 Chennai              19-APR-21
+      1013 Ramesh                         Male       IT                   Support Engineer                    30000 Hyderabad            10-AUG-22 ramesh@company.com
+      1015 Neha                           Female     Sales                Sales Executive                     38000 Delhi                14-FEB-23 neha@company.com
+      1017 Kiran                          Male       Finance              Accountant                                Mumbai               21-DEC-22 kiran@company.com
+      1018 Meena                          Female     HR                   Recruiter                           32000 Bangalore            11-JUN-20 meena@company.com
+      1020 Anita                          Female     Sales                Sales Executive                     38000 Delhi                07-JUL-21 anita.sales@company.com
+
+13 rows selected.
+
+Display employees whose name starts with ‘A’.
+ SELECT * FROM employee WHERE emp_name LIKE 'A%';
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1001 Arun                           Male       IT                   Developer                           45000 Chennai              10-JAN-22 arun@company.com
+      1006 Anita                          Female     Sales                Sales Executive                     38000 Delhi                12-SEP-22 anita@company.com
+      1011 Amit                           Male       Sales                Sales Manager                       60000 Delhi                01-DEC-19 amit@company.com
+      1016 Arun                           Male       IT                   Developer                           45000 Chennai              09-SEP-21 arun.it@company.com
+      1020 Anita                          Female     Sales                Sales Executive                     38000 Delhi                07-JUL-21 anita.sales@company.com
+
+Display employees whose salary is NULL.
+SELECT * FROM employee WHERE salary IS NULL;
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1005 Ravi                           Male       Finance              Accountant                                Mumbai               18-JUL-20 ravi@company.com
+      1010 Sneha                          Female     Finance              Analyst                                   Mumbai               08-JAN-23 sneha@company.com
+      1017 Kiran                          Male       Finance              Accountant                                Mumbai               21-DEC-22 kiran@company.com
+      1022 Sanjay                         Male       IT                   Developer                                 Chennai              02-FEB-20
+
+Display employees whose email is NULL.
+SELECT * FROM employee WHERE email IS NULL;
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1009 Rahul                          Male       IT                   Developer                           45000 Chennai              14-MAR-20
+      1012 Pooja                          Female     HR                   HR Executive                        40000 Chennai              19-APR-21
+      1019 Vijay                          Male       IT                   Tester                              35000 Hyderabad            01-APR-23
+      1022 Sanjay                         Male       IT                   Developer                                 Chennai              02-FEB-20
+
+Display employees whose salary is NOT NULL.
+ SELECT * FROM employee WHERE salary IS NOT NULL;
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1001 Arun                           Male       IT                   Developer                           45000 Chennai              10-JAN-22 arun@company.com
+      1003 Divya                          Female     HR                   HR Executive                        40000 Bangalore            15-MAY-21 divya@company.com
+      1004 Mubeen                         Male       IT                   Senior Developer                    55000 Chennai              20-MAR-23 mubeen@company.com
+      1006 Anita                          Female     Sales                Sales Executive                     38000 Delhi                12-SEP-22 anita@company.com
+      1007 Kumar                          Male       HR                   Recruiter                           32000 Chennai              05-NOV-21 kumar@company.com
+      1008 Divya                          Female     IT                   Tester                              40000 Bangalore            25-JUN-22 divya.it@company.com
+      1009 Rahul                          Male       IT                   Developer                           45000 Chennai              14-MAR-20
+      1011 Amit                           Male       Sales                Sales Manager                       60000 Delhi                01-DEC-19 amit@company.com
+      1012 Pooja                          Female     HR                   HR Executive                        40000 Chennai              19-APR-21
+      1013 Ramesh                         Male       IT                   Support Engineer                    30000 Hyderabad            10-AUG-22 ramesh@company.com
+      1014 Suresh                         Male       IT                   Developer                           45000 Chennai              30-OCT-20 suresh@company.com
+      1015 Neha                           Female     Sales                Sales Executive                     38000 Delhi                14-FEB-23 neha@company.com
+      1016 Arun                           Male       IT                   Developer                           45000 Chennai              09-SEP-21 arun.it@company.com
+      1018 Meena                          Female     HR                   Recruiter                           32000 Bangalore            11-JUN-20 meena@company.com
+      1019 Vijay                          Male       IT                   Tester                              35000 Hyderabad            01-APR-23
+      1020 Anita                          Female     Sales                Sales Executive                     38000 Delhi                07-JUL-21 anita.sales@company.com
+      1021 Rohit                          Male       IT                   Developer                           45000 Chennai              18-NOV-22 rohit@company.com
+
+17 rows selected.
+
+Display employees whose email is NOT NULL.
+ SELECT * FROM employee WHERE email IS NOT NULL;
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1001 Arun                           Male       IT                   Developer                           45000 Chennai              10-JAN-22 arun@company.com
+      1003 Divya                          Female     HR                   HR Executive                        40000 Bangalore            15-MAY-21 divya@company.com
+      1004 Mubeen                         Male       IT                   Senior Developer                    55000 Chennai              20-MAR-23 mubeen@company.com
+      1005 Ravi                           Male       Finance              Accountant                                Mumbai               18-JUL-20 ravi@company.com
+      1006 Anita                          Female     Sales                Sales Executive                     38000 Delhi                12-SEP-22 anita@company.com
+      1007 Kumar                          Male       HR                   Recruiter                           32000 Chennai              05-NOV-21 kumar@company.com
+      1008 Divya                          Female     IT                   Tester                              40000 Bangalore            25-JUN-22 divya.it@company.com
+      1010 Sneha                          Female     Finance              Analyst                                   Mumbai               08-JAN-23 sneha@company.com
+      1011 Amit                           Male       Sales                Sales Manager                       60000 Delhi                01-DEC-19 amit@company.com
+      1013 Ramesh                         Male       IT                   Support Engineer                    30000 Hyderabad            10-AUG-22 ramesh@company.com
+      1014 Suresh                         Male       IT                   Developer                           45000 Chennai              30-OCT-20 suresh@company.com
+      1015 Neha                           Female     Sales                Sales Executive                     38000 Delhi                14-FEB-23 neha@company.com
+      1016 Arun                           Male       IT                   Developer                           45000 Chennai              09-SEP-21 arun.it@company.com
+      1017 Kiran                          Male       Finance              Accountant                                Mumbai               21-DEC-22 kiran@company.com
+      1018 Meena                          Female     HR                   Recruiter                           32000 Bangalore            11-JUN-20 meena@company.com
+      1020 Anita                          Female     Sales                Sales Executive                     38000 Delhi                07-JUL-21 anita.sales@company.com
+      1021 Rohit                          Male       IT                   Developer                           45000 Chennai              18-NOV-22 rohit@company.com
+
+17 rows selected.
+
+Display employees whose name ends with ‘i’.
+ SELECT * FROM employee WHERE emp_name LIKE '%i';
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1005 Ravi                           Male       Finance              Accountant                                Mumbai               18-JUL-20 ravi@company.com
+
+Display employees whose name contains ‘vi’.
+SELECT * FROM employee WHERE emp_name LIKE '%vi%';
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1005 Ravi                           Male       Finance              Accountant                                Mumbai               18-JUL-20 ravi@company.com
+
+
+Display employees whose email contains ‘@company.com’.
+SELECT * FROM employee WHERE email LIKE '%@company.com%';
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1001 Arun                           Male       IT                   Developer                           45000 Chennai              10-JAN-22 arun@company.com
+      1003 Divya                          Female     HR                   HR Executive                        40000 Bangalore            15-MAY-21 divya@company.com
+      1004 Mubeen                         Male       IT                   Senior Developer                    55000 Chennai              20-MAR-23 mubeen@company.com
+      1005 Ravi                           Male       Finance              Accountant                                Mumbai               18-JUL-20 ravi@company.com
+      1006 Anita                          Female     Sales                Sales Executive                     38000 Delhi                12-SEP-22 anita@company.com
+      1007 Kumar                          Male       HR                   Recruiter                           32000 Chennai              05-NOV-21 kumar@company.com
+      1008 Divya                          Female     IT                   Tester                              40000 Bangalore            25-JUN-22 divya.it@company.com
+      1010 Sneha                          Female     Finance              Analyst                                   Mumbai               08-JAN-23 sneha@company.com
+      1011 Amit                           Male       Sales                Sales Manager                       60000 Delhi                01-DEC-19 amit@company.com
+      1013 Ramesh                         Male       IT                   Support Engineer                    30000 Hyderabad            10-AUG-22 ramesh@company.com
+      1014 Suresh                         Male       IT                   Developer                           45000 Chennai              30-OCT-20 suresh@company.com
+      1015 Neha                           Female     Sales                Sales Executive                     38000 Delhi                14-FEB-23 neha@company.com
+      1016 Arun                           Male       IT                   Developer                           45000 Chennai              09-SEP-21 arun.it@company.com
+      1017 Kiran                          Male       Finance              Accountant                                Mumbai               21-DEC-22 kiran@company.com
+      1018 Meena                          Female     HR                   Recruiter                           32000 Bangalore            11-JUN-20 meena@company.com
+      1020 Anita                          Female     Sales                Sales Executive                     38000 Delhi                07-JUL-21 anita.sales@company.com
+      1021 Rohit                          Male       IT                   Developer                           45000 Chennai              18-NOV-22 rohit@company.com
+
+17 rows selected.
+
+
+Display employees whose designation ends with ‘Engineer’.
+SELECT * FROM employee WHERE designation LIKE '%Engineer';
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1013 Ramesh                         Male       IT                   Support Engineer                    30000 Hyderabad            10-AUG-22 ramesh@company.com
+
+
+Display all employees ordered by salary ascending.
+SELECT * FROM employee ORDER BY salary ASC;
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1013 Ramesh                         Male       IT                   Support Engineer                    30000 Hyderabad            10-AUG-22 ramesh@company.com
+      1018 Meena                          Female     HR                   Recruiter                           32000 Bangalore            11-JUN-20 meena@company.com
+      1007 Kumar                          Male       HR                   Recruiter                           32000 Chennai              05-NOV-21 kumar@company.com
+      1019 Vijay                          Male       IT                   Tester                              35000 Hyderabad            01-APR-23
+      1015 Neha                           Female     Sales                Sales Executive                     38000 Delhi                14-FEB-23 neha@company.com
+      1006 Anita                          Female     Sales                Sales Executive                     38000 Delhi                12-SEP-22 anita@company.com
+      1020 Anita                          Female     Sales                Sales Executive                     38000 Delhi                07-JUL-21 anita.sales@company.com
+      1008 Divya                          Female     IT                   Tester                              40000 Bangalore            25-JUN-22 divya.it@company.com
+      1003 Divya                          Female     HR                   HR Executive                        40000 Bangalore            15-MAY-21 divya@company.com
+      1012 Pooja                          Female     HR                   HR Executive                        40000 Chennai              19-APR-21
+      1001 Arun                           Male       IT                   Developer                           45000 Chennai              10-JAN-22 arun@company.com
+      1014 Suresh                         Male       IT                   Developer                           45000 Chennai              30-OCT-20 suresh@company.com
+      1021 Rohit                          Male       IT                   Developer                           45000 Chennai              18-NOV-22 rohit@company.com
+      1016 Arun                           Male       IT                   Developer                           45000 Chennai              09-SEP-21 arun.it@company.com
+      1009 Rahul                          Male       IT                   Developer                           45000 Chennai              14-MAR-20
+      1004 Mubeen                         Male       IT                   Senior Developer                    55000 Chennai              20-MAR-23 mubeen@company.com
+      1011 Amit                           Male       Sales                Sales Manager                       60000 Delhi                01-DEC-19 amit@company.com
+      1022 Sanjay                         Male       IT                   Developer                                 Chennai              02-FEB-20
+      1010 Sneha                          Female     Finance              Analyst                                   Mumbai               08-JAN-23 sneha@company.com
+      1005 Ravi                           Male       Finance              Accountant                                Mumbai               18-JUL-20 ravi@company.com
+      1017 Kiran                          Male       Finance              Accountant                                Mumbai               21-DEC-22 kiran@company.com
+
+21 rows selected.
+
+Display employees ordered by department ASC and salary DESC.
+ SELECT * FROM employee ORDER BY department ASC, salary DESC;
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1017 Kiran                          Male       Finance              Accountant                                Mumbai               21-DEC-22 kiran@company.com
+      1010 Sneha                          Female     Finance              Analyst                                   Mumbai               08-JAN-23 sneha@company.com
+      1005 Ravi                           Male       Finance              Accountant                                Mumbai               18-JUL-20 ravi@company.com
+      1003 Divya                          Female     HR                   HR Executive                        40000 Bangalore            15-MAY-21 divya@company.com
+      1012 Pooja                          Female     HR                   HR Executive                        40000 Chennai              19-APR-21
+      1007 Kumar                          Male       HR                   Recruiter                           32000 Chennai              05-NOV-21 kumar@company.com
+      1018 Meena                          Female     HR                   Recruiter                           32000 Bangalore            11-JUN-20 meena@company.com
+      1022 Sanjay                         Male       IT                   Developer                                 Chennai              02-FEB-20
+      1004 Mubeen                         Male       IT                   Senior Developer                    55000 Chennai              20-MAR-23 mubeen@company.com
+      1009 Rahul                          Male       IT                   Developer                           45000 Chennai              14-MAR-20
+      1016 Arun                           Male       IT                   Developer                           45000 Chennai              09-SEP-21 arun.it@company.com
+      1021 Rohit                          Male       IT                   Developer                           45000 Chennai              18-NOV-22 rohit@company.com
+      1001 Arun                           Male       IT                   Developer                           45000 Chennai              10-JAN-22 arun@company.com
+      1014 Suresh                         Male       IT                   Developer                           45000 Chennai              30-OCT-20 suresh@company.com
+      1008 Divya                          Female     IT                   Tester                              40000 Bangalore            25-JUN-22 divya.it@company.com
+      1019 Vijay                          Male       IT                   Tester                              35000 Hyderabad            01-APR-23
+      1013 Ramesh                         Male       IT                   Support Engineer                    30000 Hyderabad            10-AUG-22 ramesh@company.com
+      1011 Amit                           Male       Sales                Sales Manager                       60000 Delhi                01-DEC-19 amit@company.com
+      1020 Anita                          Female     Sales                Sales Executive                     38000 Delhi                07-JUL-21 anita.sales@company.com
+      1006 Anita                          Female     Sales                Sales Executive                     38000 Delhi                12-SEP-22 anita@company.com
+      1015 Neha                           Female     Sales                Sales Executive                     38000 Delhi                14-FEB-23 neha@company.com
+
+21 rows selected.
+
+
+Display employees ordered by location ASC and employee name ASC.
+SELECT * FROM employee ORDER BY location ASC, emp_name ASC;
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1003 Divya                          Female     HR                   HR Executive                        40000 Bangalore            15-MAY-21 divya@company.com
+      1008 Divya                          Female     IT                   Tester                              40000 Bangalore            25-JUN-22 divya.it@company.com
+      1018 Meena                          Female     HR                   Recruiter                           32000 Bangalore            11-JUN-20 meena@company.com
+      1001 Arun                           Male       IT                   Developer                           45000 Chennai              10-JAN-22 arun@company.com
+      1016 Arun                           Male       IT                   Developer                           45000 Chennai              09-SEP-21 arun.it@company.com
+      1007 Kumar                          Male       HR                   Recruiter                           32000 Chennai              05-NOV-21 kumar@company.com
+      1004 Mubeen                         Male       IT                   Senior Developer                    55000 Chennai              20-MAR-23 mubeen@company.com
+      1012 Pooja                          Female     HR                   HR Executive                        40000 Chennai              19-APR-21
+      1009 Rahul                          Male       IT                   Developer                           45000 Chennai              14-MAR-20
+      1021 Rohit                          Male       IT                   Developer                           45000 Chennai              18-NOV-22 rohit@company.com
+      1022 Sanjay                         Male       IT                   Developer                                 Chennai              02-FEB-20
+      1014 Suresh                         Male       IT                   Developer                           45000 Chennai              30-OCT-20 suresh@company.com
+      1011 Amit                           Male       Sales                Sales Manager                       60000 Delhi                01-DEC-19 amit@company.com
+      1006 Anita                          Female     Sales                Sales Executive                     38000 Delhi                12-SEP-22 anita@company.com
+      1020 Anita                          Female     Sales                Sales Executive                     38000 Delhi                07-JUL-21 anita.sales@company.com
+      1015 Neha                           Female     Sales                Sales Executive                     38000 Delhi                14-FEB-23 neha@company.com
+      1013 Ramesh                         Male       IT                   Support Engineer                    30000 Hyderabad            10-AUG-22 ramesh@company.com
+      1019 Vijay                          Male       IT                   Tester                              35000 Hyderabad            01-APR-23
+      1017 Kiran                          Male       Finance              Accountant                                Mumbai               21-DEC-22 kiran@company.com
+      1005 Ravi                           Male       Finance              Accountant                                Mumbai               18-JUL-20 ravi@company.com
+      1010 Sneha                          Female     Finance              Analyst                                   Mumbai               08-JAN-23 sneha@company.com
+
+21 rows selected.
+
+
+Display employees working in IT department AND salary > 45,000.SELECT * FROM employee
+  2  WHERE department = 'IT' AND salary > 45000;
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---
+      1004 Mubeen                         Male       IT                   Senior Developer                    55000 Chennai              20-MAR-23 mubeen@company.com
+
+
+Display employees working in HR OR Sales department.
+ SELECT * FROM employee WHERE department IN ('HR', 'Sales');
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1003 Divya                          Female     HR                   HR Executive                        40000 Bangalore            15-MAY-21 divya@company.com
+      1006 Anita                          Female     Sales                Sales Executive                     38000 Delhi                12-SEP-22 anita@company.com
+      1007 Kumar                          Male       HR                   Recruiter                           32000 Chennai              05-NOV-21 kumar@company.com
+      1011 Amit                           Male       Sales                Sales Manager                       60000 Delhi                01-DEC-19 amit@company.com
+      1012 Pooja                          Female     HR                   HR Executive                        40000 Chennai              19-APR-21
+      1015 Neha                           Female     Sales                Sales Executive                     38000 Delhi                14-FEB-23 neha@company.com
+      1018 Meena                          Female     HR                   Recruiter                           32000 Bangalore            11-JUN-20 meena@company.com
+      1020 Anita                          Female     Sales                Sales Executive                     38000 Delhi                07-JUL-21 anita.sales@company.com
+
+8 rows selected.
+
+Update salary to 50,000 for employees whose salary is NULL.
+UPDATE employee SET salary = 50000 WHERE salary IS NULL;
+
+4 rows updated.
+
+
+Increase salary by 5,000 for all IT employees.
+UPDATE employee SET salary = salary + 5000 WHERE department = 'IT';
+
+10 rows updated.
+
+Display employees having the same name more than once.
+SELECT emp_name, COUNT(*)
+  2  FROM employee
+  3  GROUP BY emp_name
+  4  HAVING COUNT(*) > 1;
+
+EMP_NAME                         COUNT(*)
+------------------------------ ----------
+Arun                                    2
+Divya                                   2
+Anita                                   2
+
+
+Display employees having the same salary.
+SELECT emp_name, COUNT(*)
+  2  FROM employee
+  3  GROUP BY emp_name
+  4  HAVING COUNT(*) > 1;
+
+EMP_NAME                         COUNT(*)
+------------------------------ ----------
+Arun                                    2
+Divya                                   2
+Anita                                   2
+
+SQL> SELECT salary, COUNT(*)
+  2  FROM employee
+  3  GROUP BY salary
+  4  HAVING COUNT(*) > 1;
+
+    SALARY   COUNT(*)
+---------- ----------
+     50000          8
+     40000          3
+     60000          2
+     38000          3
+     32000          2
+
+Display employees working in the same department and same location.
+SELECT department, location, COUNT(*)
+FROM employee
+GROUP BY department, location
+HAVING COUNT(*) > 1;
+
+DEPARTMENT           LOCATION               COUNT(*)
+-------------------- -------------------- ----------
+IT                   Chennai                       7
+HR                   Bangalore                     2
+Finance              Mumbai                        3
+Sales                Delhi                         4
+HR                   Chennai                       2
+IT                   Hyderabad                     2
+
+6 rows selected.
+
+Update location to Hyderabad for employees working in HR.
+UPDATE employee SET location = 'Hyderabad' WHERE department = 'HR';
+
+4 rows updated.
+
+Display employees NOT working in IT department.
+
+SELECT * FROM employee WHERE department <> 'IT';
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1003 Divya                          Female     HR                   HR Executive                        40000 Hyderabad            15-MAY-21 divya@company.com
+      1005 Ravi                           Male       Finance              Accountant                          50000 Mumbai               18-JUL-20 ravi@company.com
+      1006 Anita                          Female     Sales                Sales Executive                     38000 Delhi                12-SEP-22 anita@company.com
+      1007 Kumar                          Male       HR                   Recruiter                           32000 Hyderabad            05-NOV-21 kumar@company.com
+      1010 Sneha                          Female     Finance              Analyst                             50000 Mumbai               08-JAN-23 sneha@company.com
+      1011 Amit                           Male       Sales                Sales Manager                       60000 Delhi                01-DEC-19 amit@company.com
+      1012 Pooja                          Female     HR                   HR Executive                        40000 Hyderabad            19-APR-21
+      1015 Neha                           Female     Sales                Sales Executive                     38000 Delhi                14-FEB-23 neha@company.com
+      1017 Kiran                          Male       Finance              Accountant                          50000 Mumbai               21-DEC-22 kiran@company.com
+      1018 Meena                          Female     HR                   Recruiter                           32000 Hyderabad            11-JUN-20 meena@company.com
+      1020 Anita                          Female     Sales                Sales Executive                     38000 Delhi                07-JUL-21 anita.sales@company.com
+
+11 rows selected.
+
+Display employees working in IT AND located in Chennai.
+SELECT * FROM employee
+  2  WHERE department = 'IT' AND location = 'Chennai';
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1001 Arun                           Male       IT                   Developer                           50000 Chennai              10-JAN-22 arun@company.com
+      1004 Mubeen                         Male       IT                   Senior Developer                    60000 Chennai              20-MAR-23 mubeen@company.com
+      1009 Rahul                          Male       IT                   Developer                           50000 Chennai              14-MAR-20
+      1014 Suresh                         Male       IT                   Developer                           50000 Chennai              30-OCT-20 suresh@company.com
+      1016 Arun                           Male       IT                   Developer                           50000 Chennai              09-SEP-21 arun.it@company.com
+      1021 Rohit                          Male       IT                   Developer                           50000 Chennai              18-NOV-22 rohit@company.com
+      1022 Sanjay                         Male       IT                   Developer                           55000 Chennai              02-FEB-20
+
+7 rows selected.
+
+Display employees ordered by salary DESC and joining date ASC.
+SELECT * FROM employee
+ORDER BY salary DESC, joining_date ASC;
+
+   EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1011 Amit                           Male       Sales                Sales Manager                       60000 Delhi                01-DEC-19 amit@company.com
+      1004 Mubeen                         Male       IT                   Senior Developer                    60000 Chennai              20-MAR-23 mubeen@company.com
+      1022 Sanjay                         Male       IT                   Developer                           55000 Chennai              02-FEB-20
+      1009 Rahul                          Male       IT                   Developer                           50000 Chennai              14-MAR-20
+      1005 Ravi                           Male       Finance              Accountant                          50000 Mumbai               18-JUL-20 ravi@company.com
+      1014 Suresh                         Male       IT                   Developer                           50000 Chennai              30-OCT-20 suresh@company.com
+      1016 Arun                           Male       IT                   Developer                           50000 Chennai              09-SEP-21 arun.it@company.com
+      1001 Arun                           Male       IT                   Developer                           50000 Chennai              10-JAN-22 arun@company.com
+      1021 Rohit                          Male       IT                   Developer                           50000 Chennai              18-NOV-22 rohit@company.com
+      1017 Kiran                          Male       Finance              Accountant                          50000 Mumbai               21-DEC-22 kiran@company.com
+      1010 Sneha                          Female     Finance              Analyst                             50000 Mumbai               08-JAN-23 sneha@company.com
+      1008 Divya                          Female     IT                   Tester                              45000 Bangalore            25-JUN-22 divya.it@company.com
+      1012 Pooja                          Female     HR                   HR Executive                        40000 Hyderabad            19-APR-21
+      1003 Divya                          Female     HR                   HR Executive                        40000 Hyderabad            15-MAY-21 divya@company.com
+      1019 Vijay                          Male       IT                   Tester                              40000 Hyderabad            01-APR-23
+      1020 Anita                          Female     Sales                Sales Executive                     38000 Delhi                07-JUL-21 anita.sales@company.com
+      1006 Anita                          Female     Sales                Sales Executive                     38000 Delhi                12-SEP-22 anita@company.com
+      1015 Neha                           Female     Sales                Sales Executive                     38000 Delhi                14-FEB-23 neha@company.com
+      1013 Ramesh                         Male       IT                   Support Engineer                    35000 Hyderabad            10-AUG-22 ramesh@company.com
+      1018 Meena                          Female     HR                   Recruiter                           32000 Hyderabad            11-JUN-20 meena@company.com
+      1007 Kumar                          Male       HR                   Recruiter                           32000 Hyderabad            05-NOV-21 kumar@company.com
+
+21 rows selected.
+
+Display all employees ordered by salary descending.
+ SELECT * FROM employee ORDER BY salary DESC;
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1004 Mubeen                         Male       IT                   Senior Developer                    60000 Chennai              20-MAR-23 mubeen@company.com
+      1011 Amit                           Male       Sales                Sales Manager                       60000 Delhi                01-DEC-19 amit@company.com
+      1022 Sanjay                         Male       IT                   Developer                           55000 Chennai              02-FEB-20
+      1016 Arun                           Male       IT                   Developer                           50000 Chennai              09-SEP-21 arun.it@company.com
+      1009 Rahul                          Male       IT                   Developer                           50000 Chennai              14-MAR-20
+      1010 Sneha                          Female     Finance              Analyst                             50000 Mumbai               08-JAN-23 sneha@company.com
+      1021 Rohit                          Male       IT                   Developer                           50000 Chennai              18-NOV-22 rohit@company.com
+      1005 Ravi                           Male       Finance              Accountant                          50000 Mumbai               18-JUL-20 ravi@company.com
+      1014 Suresh                         Male       IT                   Developer                           50000 Chennai              30-OCT-20 suresh@company.com
+      1017 Kiran                          Male       Finance              Accountant                          50000 Mumbai               21-DEC-22 kiran@company.com
+      1001 Arun                           Male       IT                   Developer                           50000 Chennai              10-JAN-22 arun@company.com
+      1008 Divya                          Female     IT                   Tester                              45000 Bangalore            25-JUN-22 divya.it@company.com
+      1012 Pooja                          Female     HR                   HR Executive                        40000 Hyderabad            19-APR-21
+      1003 Divya                          Female     HR                   HR Executive                        40000 Hyderabad            15-MAY-21 divya@company.com
+      1019 Vijay                          Male       IT                   Tester                              40000 Hyderabad            01-APR-23
+      1006 Anita                          Female     Sales                Sales Executive                     38000 Delhi                12-SEP-22 anita@company.com
+      1020 Anita                          Female     Sales                Sales Executive                     38000 Delhi                07-JUL-21 anita.sales@company.com
+      1015 Neha                           Female     Sales                Sales Executive                     38000 Delhi                14-FEB-23 neha@company.com
+      1013 Ramesh                         Male       IT                   Support Engineer                    35000 Hyderabad            10-AUG-22 ramesh@company.com
+      1007 Kumar                          Male       HR                   Recruiter                           32000 Hyderabad            05-NOV-21 kumar@company.com
+      1018 Meena                          Female     HR                   Recruiter                           32000 Hyderabad            11-JUN-20 meena@company.com
+
+21 rows selected.
+
+Display all employees ordered by joining date ascending.
+SELECT * FROM employee ORDER BY joining_date ASC;
+
+  EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1011 Amit                           Male       Sales                Sales Manager                       60000 Delhi                01-DEC-19 amit@company.com
+      1022 Sanjay                         Male       IT                   Developer                           55000 Chennai              02-FEB-20
+      1009 Rahul                          Male       IT                   Developer                           50000 Chennai              14-MAR-20
+      1018 Meena                          Female     HR                   Recruiter                           32000 Hyderabad            11-JUN-20 meena@company.com
+      1005 Ravi                           Male       Finance              Accountant                          50000 Mumbai               18-JUL-20 ravi@company.com
+      1014 Suresh                         Male       IT                   Developer                           50000 Chennai              30-OCT-20 suresh@company.com
+      1012 Pooja                          Female     HR                   HR Executive                        40000 Hyderabad            19-APR-21
+      1003 Divya                          Female     HR                   HR Executive                        40000 Hyderabad            15-MAY-21 divya@company.com
+      1020 Anita                          Female     Sales                Sales Executive                     38000 Delhi                07-JUL-21 anita.sales@company.com
+      1016 Arun                           Male       IT                   Developer                           50000 Chennai              09-SEP-21 arun.it@company.com
+      1007 Kumar                          Male       HR                   Recruiter                           32000 Hyderabad            05-NOV-21 kumar@company.com
+      1001 Arun                           Male       IT                   Developer                           50000 Chennai              10-JAN-22 arun@company.com
+      1008 Divya                          Female     IT                   Tester                              45000 Bangalore            25-JUN-22 divya.it@company.com
+      1013 Ramesh                         Male       IT                   Support Engineer                    35000 Hyderabad            10-AUG-22 ramesh@company.com
+      1006 Anita                          Female     Sales                Sales Executive                     38000 Delhi                12-SEP-22 anita@company.com
+      1021 Rohit                          Male       IT                   Developer                           50000 Chennai              18-NOV-22 rohit@company.com
+      1017 Kiran                          Male       Finance              Accountant                          50000 Mumbai               21-DEC-22 kiran@company.com
+      1010 Sneha                          Female     Finance              Analyst                             50000 Mumbai               08-JAN-23 sneha@company.com
+      1015 Neha                           Female     Sales                Sales Executive                     38000 Delhi                14-FEB-23 neha@company.com
+      1004 Mubeen                         Male       IT                   Senior Developer                    60000 Chennai              20-MAR-23 mubeen@company.com
+      1019 Vijay                          Male       IT                   Tester                              40000 Hyderabad            01-APR-23
+
+21 rows selected.
+
+
+Display all employees ordered by employee name alphabetically.
+SELECT * FROM employee ORDER BY emp_name ASC;
+
+    EMP_ID EMP_NAME                       GENDER     DEPARTMENT           DESIGNATION                        SALARY LOCATION             JOINING_D EMAIL
+---------- ------------------------------ ---------- -------------------- ------------------------------ ---------- -------------------- --------- --------------------------------------------------
+      1011 Amit                           Male       Sales                Sales Manager                       60000 Delhi                01-DEC-19 amit@company.com
+      1020 Anita                          Female     Sales                Sales Executive                     38000 Delhi                07-JUL-21 anita.sales@company.com
+      1006 Anita                          Female     Sales                Sales Executive                     38000 Delhi                12-SEP-22 anita@company.com
+      1001 Arun                           Male       IT                   Developer                           50000 Chennai              10-JAN-22 arun@company.com
+      1016 Arun                           Male       IT                   Developer                           50000 Chennai              09-SEP-21 arun.it@company.com
+      1003 Divya                          Female     HR                   HR Executive                        40000 Hyderabad            15-MAY-21 divya@company.com
+      1008 Divya                          Female     IT                   Tester                              45000 Bangalore            25-JUN-22 divya.it@company.com
+      1017 Kiran                          Male       Finance              Accountant                          50000 Mumbai               21-DEC-22 kiran@company.com
+      1007 Kumar                          Male       HR                   Recruiter                           32000 Hyderabad            05-NOV-21 kumar@company.com
+      1018 Meena                          Female     HR                   Recruiter                           32000 Hyderabad            11-JUN-20 meena@company.com
+      1004 Mubeen                         Male       IT                   Senior Developer                    60000 Chennai              20-MAR-23 mubeen@company.com
+      1015 Neha                           Female     Sales                Sales Executive                     38000 Delhi                14-FEB-23 neha@company.com
+      1012 Pooja                          Female     HR                   HR Executive                        40000 Hyderabad            19-APR-21
+      1009 Rahul                          Male       IT                   Developer                           50000 Chennai              14-MAR-20
+      1013 Ramesh                         Male       IT                   Support Engineer                    35000 Hyderabad            10-AUG-22 ramesh@company.com
+      1005 Ravi                           Male       Finance              Accountant                          50000 Mumbai               18-JUL-20 ravi@company.com
+      1021 Rohit                          Male       IT                   Developer                           50000 Chennai              18-NOV-22 rohit@company.com
+      1022 Sanjay                         Male       IT                   Developer                           55000 Chennai              02-FEB-20
+      1010 Sneha                          Female     Finance              Analyst                             50000 Mumbai               08-JAN-23 sneha@company.com
+      1014 Suresh                         Male       IT                   Developer                           50000 Chennai              30-OCT-20 suresh@company.com
+      1019 Vijay                          Male       IT                   Tester                              40000 Hyderabad            01-APR-23
+
+21 rows selected.
