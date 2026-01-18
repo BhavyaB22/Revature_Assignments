@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Promise Assignment</title>
-        <style>
-            body{
-                font-family: Georgia, 'Times New Roman', Times, serif;
-                text-align: center;
-            }
-            .container{
-                padding:50px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <h1>SpaceX Launch Dashboard</h1>
-            <button id="launch-btn" >Load Latest SpaceX Launch </button>
-            <p id="loading-data">Fetchind Data...</p>
-            <p id ="error"></p>
-            <div id="launch-details">
-                <h2 id="mission-name"></h2>
-                <p><strong>Launch Date:</strong><p id="launch-date"></p>
-                <p id="details"></p>
-            </div>
+<head>
+    <title>Promise Assignment</title>
+    <style>
+        body{
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            text-align: center;
+        }
+        .container{
+            padding:50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SpaceX Launch Dashboard</h1>
+        <button id="launch-btn">Load Latest SpaceX Launch</button>
+
+        <p id="loading-data" style="display:none;">Fetching Data...</p>
+        <p id="error" style="color:red;"></p>
+
+        <div id="launch-details">
+            <h2 id="mission-name"></h2>
+            <p><strong>Launch Date:</strong> <span id="launch-date"></span></p>
+            <p id="details"></p>
         </div>
-        
-    </body>
-    <script>src="load.js"</script>
+    </div>
+
+    <script src="load.js"></script>
+</body>
 </html>
