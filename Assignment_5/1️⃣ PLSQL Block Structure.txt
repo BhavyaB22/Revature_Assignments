@@ -1,0 +1,214 @@
+1️⃣ PL/SQL Block Structure
+
+DECLARE → BEGIN → EXCEPTION → END
+
+DECLARE → variables, cursors, TYPE
+
+BEGIN → logic
+
+EXCEPTION → error handling
+
+Line to say:
+
+“PL/SQL executes sequentially and transfers control to EXCEPTION on error.”
+
+2️⃣ %TYPE & %ROWTYPE
+
+%TYPE → single column datatype
+
+%ROWTYPE → entire row structure
+
+Use when: table structure may change
+
+Line:
+
+“They make code table-dependent and future-safe.”
+
+3️⃣ IF vs CASE
+
+IF → complex conditions, ranges
+
+CASE → equality checks, cleaner
+
+Rule:
+
+“IF is flexible, CASE is readable.”
+
+4️⃣ LOOPS
+
+LOOP → basic
+
+WHILE → condition first
+
+FOR → counter controlled (most used)
+
+Line:
+
+“FOR loop is preferred for controlled iteration.”
+
+5️⃣ PROCEDURE vs FUNCTION
+
+Procedure → action, OUT params
+
+Function → calculation, RETURN value
+
+Golden line:
+
+“Function must return a value; procedure may not.”
+
+6️⃣ IN / OUT / IN OUT
+
+IN → input only
+
+OUT → output only
+
+IN OUT → both
+
+Rule:
+
+“IN for data, OUT for result.”
+
+7️⃣ PACKAGES
+
+Spec → what is exposed
+
+Body → implementation
+
+Why used:
+
+Encapsulation
+
+Performance (loaded once per session)
+
+Line:
+
+“Spec is interface, body is implementation.”
+
+8️⃣ TRIGGERS
+
+Automatic execution
+
+BEFORE / AFTER
+
+ROW / STATEMENT
+
+Rules:
+
+No COMMIT/ROLLBACK
+
+Use RAISE_APPLICATION_ERROR
+
+Line:
+
+“Triggers enforce rules, not business logic.”
+
+9️⃣ EXCEPTIONS
+
+Predefined (NO_DATA_FOUND)
+
+User-defined
+
+WHEN OTHERS last
+
+Best practice:
+
+Log + re-raise
+
+🔟 PRAGMA EXCEPTION_INIT
+
+Maps ORA error to named exception
+
+Line:
+
+“Used for handling non-predefined Oracle errors.”
+
+1️⃣1️⃣ CURSORS
+
+Implicit → single row
+
+Explicit → multi row
+
+Cursor FOR → safest
+
+Parameterized → reusable
+
+REF cursor → dynamic result set
+
+Rule:
+
+“If SQL can do it, don’t use cursor.”
+
+1️⃣2️⃣ EXECUTE IMMEDIATE
+
+Dynamic SQL
+
+Required for DDL
+
+Use bind variables
+
+Line:
+
+“Used when SQL structure is not known at compile time.”
+
+1️⃣3️⃣ SQL INJECTION
+
+Happens due to string concatenation
+
+Prevent using bind variables / placeholders
+
+Line:
+
+“Separate SQL from data.”
+
+1️⃣4️⃣ ERROR HANDLING & LOGGING
+
+Handle → EXCEPTION block
+
+Log → table with SQLCODE, SQLERRM
+
+Rule:
+
+“Handle for users, log for developers.”
+
+1️⃣5️⃣ PRAGMA AUTONOMOUS_TRANSACTION
+
+Independent transaction
+
+Used for logging / auditing
+
+Line:
+
+“Logs survive even if main transaction fails.”
+
+1️⃣6️⃣ BULK COLLECT & FORALL
+
+BULK COLLECT → fetch many rows
+
+FORALL → bulk DML
+
+Memory rule:
+
+“Read → BULK COLLECT
+Write → FORALL”
+
+🔥 TOP 10 INTERVIEW ONE-LINERS (MEMORIZE)
+
+“PL/SQL reduces context switching using bulk processing.”
+
+“Functions return values, procedures perform actions.”
+
+“Triggers fire automatically and cannot commit.”
+
+“Packages improve performance and encapsulation.”
+
+“Bind variables prevent SQL injection.”
+
+“REF cursors return dynamic result sets.”
+
+“WHEN OTHERS should log and re-raise.”
+
+“Autonomous transactions are used for logging.”
+
+“Cursor FOR loop is safest for row processing.”
+
+“Dynamic SQL requires EXECUTE IMMEDIATE.”
